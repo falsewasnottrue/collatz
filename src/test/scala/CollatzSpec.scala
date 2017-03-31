@@ -16,4 +16,11 @@ class CollatzSpec extends FlatSpec with Matchers {
     3.next should be(Some(10))
     17.next should be(Some(52))
   }
+
+  it should "build chains" in {
+    1.chain should be(Seq(1))
+    5.chain should be(Seq(5,16,8,4,2,1))
+    7.chain should be(Seq(7,22,11,34,17,52,26,13,40,20,10,5,16,8,4,2,1))
+    7.chain should be(Seq(7,22,11,34,17,52,26,13,40,20,10) ++ 5.chain)
+  }
 }
